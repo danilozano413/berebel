@@ -10,6 +10,8 @@ import {ComponentsModule} from 'src/app/components/components.module';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 
+//providers
+import {ApiProvider} from 'src/app/providers/api.provider';
 
 //Services
 import {AuthService} from 'src/app/services/auth.service';
@@ -69,7 +71,9 @@ export function createTranslateLoader(http: HttpClient)
 
 
             AuthService,
-            WoocommerceService
+            WoocommerceService,
+            
+            ApiProvider
         ],
     bootstrap: [AppComponent]
 })

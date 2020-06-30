@@ -5,8 +5,6 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class ApiProvider
 {
-    private url: string = null;
-
 
     constructor(
         public http: HttpClient,
@@ -26,12 +24,12 @@ export class ApiProvider
         {
             options.params = params;
         }
-        return this.http.get(this.url + '/' + endpoint, options);
+        return this.http.get(endpoint, options);
     }
 
     post(endpoint: string, body?: any, options?: any)
     {
-        return this.http.post(this.url + '/' + endpoint, body, options);
+        return this.http.post(endpoint, body, options);
     }
 
     form(endpoint: string, params: any, options: any = {}, fullPath: boolean = false)
@@ -46,30 +44,26 @@ export class ApiProvider
         let path: string = endpoint;
         if (!fullPath)
         {
-            path = this.url + '/' + endpoint
+            path = endpoint
         }
         return this.http.post(path, p.toString(), options);
     }
 
     put(endpoint: string, body: any, options?: any)
     {
-        return this.http.put(this.url + '/' + endpoint, body, options);
+        return this.http.put(endpoint, body, options);
     }
 
     delete(endpoint: string, options?: any)
     {
-        return this.http.delete(this.url + '/' + endpoint, options);
+        return this.http.delete(endpoint, options);
     }
 
-    patch(endpoint: string, body: any, options?: any, url = this.url)
+    patch(endpoint: string, body: any, options?: any, url: string = null)
     {
         return this.http.put(url + '/' + endpoint, body, options);
     }
 
-    public getUrl()
-    {
-        return this.url;
-    }
 
     public getEndpoint(url: string, params: string[] = null)
     {
@@ -82,7 +76,7 @@ export class ApiProvider
                 opt += key + "=" + params[key] + "&";
             }
         }
-        return this.getUrl() + '/' + url + (opt === null ? '' : opt)
+        return url + (opt === null ? '' : opt)
     }
 
 }
