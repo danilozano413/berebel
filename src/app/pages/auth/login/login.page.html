@@ -1,0 +1,49 @@
+<app-header  [logoutbtn]="false" [nolines]="true"></app-header>
+
+<ion-content>
+
+    <div class="loginpage" *ngIf="loginForm">
+        <div class="loginpage__title bg-primary py-1">
+            <div class="color-secondary w-80 mx-auto">
+                {{"login" | translate}}
+            </div>
+        </div>
+
+        <form [formGroup]='loginForm' class="loginpage__form w-80 mx-auto my-1" (ngSubmit)='login()'>
+            <div class='mb-0_5'>
+                <ion-item mode="md" class="loginpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'email'| translate}}</ion-label>
+                    <ion-input type="email" required formControlName='email' autocomplete="email"></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('email')">
+                    <span *ngFor="let error of hasError('email')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <div class='mb-0_5'>
+                <ion-item mode="md" class="loginpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'password'| translate}}</ion-label>
+                    <ion-input type="password" required formControlName='password' autocomplete="password"></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('password')">
+                    <span *ngFor="let error of hasError('password')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <ion-button mode="md" fill="outline" expand="block"  color='primary'  type="submit"  [disabled]="!loginForm.valid" class="mt-2">
+                {{ 'send' | translate }}
+            </ion-button>
+        </form>
+
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="footer bg-primary">
+        <div class='register text-center py-0_5 w-80 mx-auto'>
+            <div class="registerbtn__caption color-light text-italic fz-0_8 mb-0_5"> {{'unregistered' | translate}}</div>
+            <ion-button fill="outline" expand="block" class="register__btn" color="secondary" (click)="goRegister()">
+                <div class="register__btn__title">{{'register'| translate}}</div>
+            </ion-button>
+        </div>
+    </div>
+</ion-footer>

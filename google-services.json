@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "613485645872",
+    "firebase_url": "https://berebel-91e18.firebaseio.com",
+    "project_id": "berebel-91e18",
+    "storage_bucket": "berebel-91e18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613485645872:android:651f34cbcf478ce9fc5df5",
+        "android_client_info": {
+          "package_name": "com.berebel.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613485645872-a6eobg4hj8h0lkesr33pq06dh3adq2h3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd2fuSniezj5IddwE24cYm4KrmA1xmWAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613485645872-a6eobg4hj8h0lkesr33pq06dh3adq2h3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

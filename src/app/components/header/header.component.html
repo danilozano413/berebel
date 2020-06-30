@@ -1,0 +1,28 @@
+<ion-header class='header' mode='md' [ngClass]=" {'ion-no-border' : nolines}">
+    <ion-toolbar  mode='md'>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/" icon="ios-arrow-back"  color='light-shade' *ngIf="back" mode="md" (press)='goHome()'></ion-back-button>
+        </ion-buttons>
+        <ion-title class='header__title ion-no-padding text-center'>
+            <ion-grid class="ion-no-padding">
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="2">
+                        <div class='header__title__image text-center'>
+                            <img class="" [alt]="'appname' | translate" [title]="'appname' | translate" src="assets/img/logo.png" (click)='goHome()'>
+                        </div>
+                    </ion-col>
+                    <ion-col size="10">
+                        <div class='header__title__label  color-primary text-bold fz-1 text-left' [ngClass]="{'text-upper': title,'header__title__label--large': title && (title | translate).length > 12}">
+                            {{ (title  ? title : 'appname') | translate}}
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-title>
+        <ion-buttons slot="end" >
+            <ion-button mode="md" class="exit" *ngIf="logoutbtn" (click)="logout()">
+                <ion-icon class="exit__icon" mode="ios" slot="icon-only" name="exit-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>

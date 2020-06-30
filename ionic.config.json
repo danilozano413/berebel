@@ -1,0 +1,7 @@
+{
+  "name": "berebel",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

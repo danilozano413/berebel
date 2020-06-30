@@ -1,0 +1,697 @@
+@import 'variables.scss';
+@import 'functions.scss';
+
+:root 
+{
+    @each $name, $color in $colors_base 
+    {
+        .ion-color-#{$name}, .color-#{$name}
+        {
+            color: #{color($name)};
+        }
+        --color-#{$name}: #{color($name)};
+        //set for ionic
+        --ion-color-#{$name}: #{color($name)};
+        @each $config, $value in $colors_config 
+        {
+            .ion-color-#{$name}-#{$config}, .color-#{$name}-#{$config}
+            {
+                color: #{color($name,$config)};
+            }
+            --color-#{$name}-#{$config}: #{color($name,$config)};
+            //set for ionic
+            --ion-color-#{$name}-#{$config}: #{color($name,$config)};
+
+        }
+        --color-#{$name}-oposited: #{color($name)};
+        --ion-color-#{$name}-oposited: #{color($name)};
+    }
+}
+
+@each $keySize, $valueSize in $screen-breakpoints {
+    .hidden-#{$keySize}
+    {
+        @media (min-width: $valueSize) {
+            display: none;
+        }
+    }
+}
+
+@each $keySize, $valueSize in $screen-breakpoints {
+    .visible-block-#{$keySize}, .visible-#{$keySize}
+    {
+        @media (min-width: $valueSize) 
+            {
+            display: block;
+        }
+    }
+}
+
+@each $keySize, $valueSize in $screen-breakpoints {
+    .visible-inline-block-#{$keySize}
+    {
+        @media (min-width: $valueSize)
+            {
+            display: inline-block;
+        }
+    }
+}
+
+
+@each $display, $dval in $displays {
+
+    .d-#{$display}, .d-#{$dval}
+    {
+        display: #{$dval};
+    }
+
+    @each $keySize, $valueSize in $screen-breakpoints {
+
+        .d-#{$keySize}-#{$display}, .d-#{$keySize}-#{$dval}
+        {
+            @media (min-width: $valueSize)
+                {
+                display: #{$dval};
+            }
+        }
+    }
+}
+
+.color
+{
+    @each $name, $color in $colors_base 
+    {
+        &-#{$name},&--#{$name}
+        {
+            color: #{color($name)};
+            @each $config, $value in $colors_config 
+            {
+                &-#{$config}
+                {
+                    color: #{color($name,$config)};
+                }
+            }
+        }
+
+    }
+}
+
+.bg
+{
+    @each $name, $color in $colors_base 
+    {
+        &-#{$name},&--#{$name}
+        {
+            background-color: var(--background);
+            --background: #{color($name)};
+            @each $config, $value in $colors_config 
+            {
+                &-#{$config}
+                {
+                    background-color: var(--background);
+                    --background: #{color($name,$config)};
+                }
+            }
+        }
+
+    }
+    &-transparent
+    {
+        background-color: transparent;
+        --background: transparent;
+    }
+}
+
+.btn
+{
+    text-decoration: none;
+    @each $name, $color in $colors_base 
+    {
+        &-#{$name}, &--#{$name}
+        {
+            border-color:  #{color($name)};
+            background-color: #{color($name)};
+            color:  #{color(oposited($name))};
+            --background: #{color($name)};
+            --color:  #{color(oposited($name))};
+
+            &.btn--transparent, &.btn-transparent
+            {
+                border-color: transparent;
+                background-color: transparent;
+                color: #{color($name)};
+                --background: transparent;
+                --color: #{color($name)};
+                --background-focused: transparent;
+                --background-hover: transparent;
+                --color-activated: #{color($name, oposited())};
+                --color-focused: #{color($name, oposited())};
+            }
+
+            &:hover,&.active,&.btn-outline,&.btn--outline
+                {
+                border-color:  #{color($name)};
+                background-color: transparent;
+                color: #{color($name)};
+                --background: transparent;
+                --color: #{color($name)};
+
+                &.btn--transparent, &.btn-transparent
+                {
+                    border-color: transparent;
+                    background-color: transparent;
+                    color: #{color($name, oposited())};
+                    --background-focused: transparent;
+                    --background-hover: transparent;
+                    --color-activated: #{color($name, oposited())};
+                    --color-focused: #{color($name, oposited())};
+                }
+            }
+
+            @each $config, $value in $colors_config 
+            {
+                &-#{$config}
+                {
+                    border-color:  #{color($name,$config)};
+                    background-color: #{color($name,$config)};
+                    color:  #{color($name, oposited($config))};
+                    --background: #{color($name,$config)};
+                    --color:  #{color($name, oposited($config))};
+
+                    &.btn--transparent, &.btn-transparent
+                    {
+                        border-color: transparent;
+                        background-color: transparent;
+                        color: #{color($name,$config)};
+                        --background: transparent;
+                        --color: #{color($name,$config)};
+                        --background-focused: transparent;
+                        --background-hover: transparent;
+                        --color-activated: #{color($name, oposited($config))};
+                        --color-focused: #{color($name, oposited($config))};
+                    }
+                    &:hover,&.active,&.btn-outline,&.btn--outline
+                        {
+                        border-color:  #{color($name, $config)};
+                        background-color: #{color($name, oposited($config))};
+                        color:  #{color($name, $config)};
+                        --background: #{color($name, oposited($config))};
+                        --color: #{color($name, $config)};
+
+                        &.btn--transparent, &.btn-transparent
+                        {
+                            border-color: transparent;
+                            background-color: transparent;
+                            color: #{color($name, oposited($config))};
+                            --background: transparent;
+                            --color: #{color($name, oposited($config))};
+                            --background-focused: transparent;
+                            --background-hover: transparent;
+                            --color-activated: #{color($name, oposited($config))};
+                            --color-focused: #{color($name, oposited($config))};
+                        }
+                    }
+                }
+            }
+        }
+
+    } 
+    &--transparent, &-transparent
+    {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--color-dark);
+        --background: transparent;
+        --background-focused: transparent;
+        --background-hover: transparent;
+        --color: var(--color-dark);
+        --color-activated: var(--color-primary);
+        --color-focused: var(--color-primary);
+        --box-shadow: none;
+    }
+
+    &--round
+    {
+        border-radius: 1rem;
+    }
+
+    &.p-0
+    {
+        --padding-start: 0;
+        --padding-end:0;
+    }
+}
+
+.fz
+{
+    @for $i from 0 through 15
+    {
+        &-#{$i}
+        {
+            font-size: #{#{$i}#{"rem"}};
+            &-f
+            {
+                font-size: #{#{$i}#{"rem"}} !important;   
+            }
+            @for $o from 0 through 9
+            {
+                &_#{$o}
+                {
+                    font-size: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    &-f
+                    {
+                        font-size: #{#{$i}#{"."}#{$o}#{"rem"}} !important;   
+                    }
+                }              
+            }
+        }
+
+    }
+}
+
+.m
+{
+    &x
+    {
+        &-auto
+        {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    &y
+    {
+        &-auto
+        {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+    @each $label, $value in $possitions 
+    {
+        &#{$label}-auto
+        {
+            margin-#{$value}: auto;
+        }
+    }
+    @for $i from 0 through 15
+    {
+        &x
+        {
+            &-#{$i}
+            {
+                margin-left: #{#{$i}#{"rem"}};
+                margin-right: #{#{$i}#{"rem"}};
+                @for $o from 0 through 9
+                {
+                    &_#{$o}
+                    {
+                        margin-left: #{#{$i}#{"."}#{$o}#{"rem"}};
+                        margin-right: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    }              
+                }
+            }
+        }
+
+        &y
+        {
+            &-#{$i}
+            {
+                margin-top: #{#{$i}#{"rem"}};
+                margin-bottom: #{#{$i}#{"rem"}};
+                @for $o from 0 through 9
+                {
+                    &_#{$o}
+                    {
+                        margin-top: #{#{$i}#{"."}#{$o}#{"rem"}};
+                        margin-bottom: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    }              
+                }
+            }
+        }
+
+        &-#{$i}
+        {
+            margin: #{#{$i}#{"rem"}};
+            @for $o from 0 through 9
+            {
+                &_#{$o}
+                {
+                    margin: #{#{$i}#{"."}#{$o}#{"rem"}};
+                }              
+            }
+        }
+        @each $label, $value in $possitions 
+        {
+            &#{$label}-#{$i}
+            {
+                margin-#{$value}: #{#{$i}#{"rem"}};
+                @for $o from 0 through 9
+                {
+                    &_#{$o}
+                    {
+                        margin-#{$value}: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    }              
+                }
+            }
+        }
+        @each $keySize, $valueSize in $screen-breakpoints 
+        {
+            @media (min-width: $valueSize)
+                {
+                &-#{$keySize}
+                {
+                    &-#{$i}
+                    {
+                        margin: #{#{$i}#{"rem"}};
+                        @for $o from 0 through 9
+                        {
+                            &_#{$o}
+                            {
+                                margin: #{#{$i}#{"."}#{$o}#{"rem"}};
+                            }              
+                        }
+                    }
+                    @each $label, $value in $possitions 
+                    {
+                        &#{$label}-#{$i}
+                        {
+                            margin-#{$value}: #{#{$i}#{"rem"}};
+                            @for $o from 0 through 9
+                            {
+                                &_#{$o}
+                                {
+                                    margin-#{$value}: #{#{$i}#{"."}#{$o}#{"rem"}};
+                                }              
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.border
+{
+    &-all, &--full
+    {
+        border: .05rem solid var(--color-light-shade);
+    }
+    @each $label, $value in $possitions 
+    {
+        &-#{$label},&-#{$value}
+        {
+            border-#{$value}: .05rem solid var(--color-light-shade);
+        }
+    }   
+    @each $name, $color in $colors_base 
+    {
+        &-#{$name}
+        {
+            border-color:  #{color($name)};
+            @each $config, $value in $colors_config 
+            {
+                &-#{$config}
+                {
+                    border-color:  #{color($name,$config)};
+                }
+            }
+        }
+    }
+
+}
+
+.p
+{
+    @for $i from 0 through 15
+    {
+        &-#{$i}
+        {
+            padding: #{#{$i}#{"rem"}};
+            @for $o from 0 through 9
+            {
+                &_#{$o}
+                {
+                    padding: #{#{$i}#{"."}#{$o}#{"rem"}};
+                }              
+            }
+        }
+        //axis
+        &#{x}-#{$i}
+        {
+            padding-left: #{#{$i}#{"rem"}};
+            padding-right: #{#{$i}#{"rem"}};
+            @for $o from 0 through 9
+            {
+                &_#{$o}
+                {
+                    padding-left: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    padding-right: #{#{$i}#{"."}#{$o}#{"rem"}};
+
+                }              
+            }
+        }
+        &#{y}-#{$i}
+        {
+            padding-top: #{#{$i}#{"rem"}};
+            padding-bottom: #{#{$i}#{"rem"}};
+            @for $o from 0 through 9
+            {
+                &_#{$o}
+                {
+                    padding-top: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    padding-bottom: #{#{$i}#{"."}#{$o}#{"rem"}};
+                }              
+            }
+        }
+        //positions
+        @each $label, $value in $possitions 
+        {
+            &#{$label}-#{$i}
+            {
+                padding-#{$value}: #{#{$i}#{"rem"}};
+                @for $o from 0 through 9
+                {
+                    &_#{$o}
+                    {
+                        padding-#{$value}: #{#{$i}#{"."}#{$o}#{"rem"}};
+                    }              
+                }
+            }
+        }
+        @each $keySize, $valueSize in $screen-breakpoints 
+        {
+            @media (min-width: $valueSize)
+                {
+                &-#{$keySize}
+                {
+                    &-#{$i}
+                    {
+                        padding: #{#{$i}#{"rem"}};
+                        @for $o from 0 through 9
+                        {
+                            &_#{$o}
+                            {
+                                padding: #{#{$i}#{"."}#{$o}#{"rem"}};
+                            }              
+                        }
+                    }
+                    @each $label, $value in $possitions 
+                    {
+                        &#{$label}-#{$i}
+                        {
+                            padding-#{$value}: #{#{$i}#{"rem"}};
+                            @for $o from 0 through 9
+                            {
+                                &_#{$o}
+                                {
+                                    padding-#{$value}: #{#{$i}#{"."}#{$o}#{"rem"}};
+                                }              
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.text
+{
+    &--uppercase, &-upper
+    {
+        text-transform: uppercase;
+    }
+    &--lowercase, &-lower
+    {
+        text-transform: lowercase;
+    }
+    &--notrans, &-notr
+    {
+        text-transform: none;
+    }
+    &--bold, &-bold, &.bold
+    {
+        font-weight: bold;
+    }
+    &--left,&-left, &-l
+    {
+        text-align: left;
+    }
+    &--right,&-right, &-r
+    {
+        text-align: right;
+    }
+    &--center,&-center, &-c
+    {
+        text-align: center;
+    }
+    &--italic, &-italic, &-i
+    {
+        font-style: italic; 
+    }
+
+}
+
+.align
+{
+    &--top,&-top, &-t
+    {
+        vertical-align: top;
+    }
+    &--middle,&-middle, &-m
+    {
+        vertical-align: middle;
+    }
+    &--bottom,&-bottom, &-b
+    {
+        vertical-align: bottom;
+    }
+}
+
+
+.w
+{
+    @for $i from 0 through 10
+    {
+        &-#{$i}0
+        {
+            width: #{$i}#{0%};
+        }
+        &-#{$i}5
+        {
+            width: #{$i}#{5%};
+        }
+    }
+    @each $keySize, $valueSize in $screen-breakpoints 
+    {
+        @media (min-width: $valueSize)
+            {
+            @for $i from 0 through 10
+            {
+                &#{$keySize}-#{$i}0
+                {
+                    width: #{$i}#{0%};
+                }
+                &#{$keySize}-#{$i}5
+                {
+                    width: #{$i}#{5%};
+                }
+            }
+        }
+    }
+}
+
+
+
+.wr
+{
+    @for $i from 1 through 10
+    {
+        &-#{$i}
+        {
+            width: #{#{$i}#{"rem"}};
+            @for $z from 1 through 9
+            {
+                &_#{$z}
+                {
+                    width: #{#{$i}#{"."}#{$z}#{"rem"}};
+                }
+            }
+        }
+
+    }
+}
+
+.h
+{
+    @for $i from 0 through 10
+    {
+        &-#{$i}0
+        {
+            height: #{$i}#{0%};
+        }
+        &-#{$i}5
+        {
+            height: #{$i}#{5%};
+        }
+    }
+    @each $keySize, $valueSize in $screen-breakpoints 
+    {
+        @media (min-width: $valueSize)
+            {
+            @for $i from 0 through 10
+            {
+                &#{$keySize}-#{$i}0
+                {
+                    height: #{$i}#{0%};
+                }
+                &#{$keySize}-#{$i}5
+                {
+                    height: #{$i}#{5%};
+                }
+            }
+        }
+    }
+}
+
+
+
+.hr
+{
+    @for $i from 1 through 10
+    {
+        &-#{$i}
+        {
+            height: #{#{$i}#{"rem"}};
+            @for $z from 1 through 9
+            {
+                &_#{$z}
+                {
+                    height: #{#{$i}#{"."}#{$z}#{"rem"}};
+                }
+            }
+        }
+
+    }
+}
+
+.lh
+{
+    @for $i from 1 through 10
+    {
+        &-#{$i}
+        {
+            line-height: #{$i};
+            @for $z from 1 through 9
+            {
+                &_#{$z}
+                {
+                    line-height: #{#{$i}#{"."}#{$z}};
+                }
+            }
+        }
+
+    }
+}

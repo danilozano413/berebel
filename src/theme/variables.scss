@@ -1,0 +1,47 @@
+@import 'functions.scss';
+
+// color variable map
+$colors_base: (
+    primary: #000,
+    secondary: #FED700,
+    tertiary: #f3f3f3,
+    success: #10dc60,
+    warning: #ffce00,
+    error: #dc3545,
+    dark: #000,
+    medium: #808080,
+    light: #fff
+);
+
+$colors_config: (
+    tint: 15%,
+    shade: 15%,
+    light: 30%,
+    dark: 30%,
+    opacid: 0.2,
+    trans: 0.4,
+    lucid: 0.8
+);
+
+$screen-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$possitions: (
+    b: 'bottom',
+    l: 'left',
+    r: 'right',
+    t: 'top'
+) !default;
+
+
+$displays: (
+    b: 'block',
+    n: 'none',
+    ib: 'inline-block',
+    f: 'flex'
+) !default;

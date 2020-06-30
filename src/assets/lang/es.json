@@ -1,0 +1,51 @@
+{
+    "appname": "BeRebel",
+    "register": "Registrarse",
+    "login": "Iniciar sesión",
+    "email": "Correo",
+    "logout": "Cerrar sesión",
+    "password": "Contraseña",
+    "password_conf": "Confirmar Contraseña",
+    "name": "Nombre",
+    "product": "Producto",
+    "products": "Productos",
+    "client_id": "Clave del cliente",
+    "client_secret": "clave secreta de cliente",
+    "already_registered": "¿Ya tienes cuenta?",
+    "unregistered": "¿No tienes cuenta?",
+    "send": "Enviar",
+    "sending": "Enviando",
+    "formError": 
+            {
+                "email":
+                        {
+                            "pattern": "Introduce un correo válido",
+                            "required": "Introduce un correo",
+                            "inuse": "El correo ya está en uso"
+                        },
+                "name":
+                        {
+                            "required": "Introduce un nombre"
+                        },
+                "password":
+                        {
+                            "required": "Introduce una contraseña",
+                            "minlength": "La contraseña es demasiado corta",
+                            "maxlength": "La contraseña es demasiado larga"
+                        },
+                "password_conf":
+                        {
+                            "pattern": "Introduce un correo válido",
+                            "required": "Repite la contraseña",
+                            "match": "Las contraseñas no coinciden"
+                        }
+            },
+    "error": 
+            {
+                "check_form": "Revisa el formulario",
+                "cordova": "Utiliza un disposivo móvil para utilizar esta funcionalidad",
+                "invalid_credentials": "Correo o contraseña incorrecto",
+                "email_inuse": "Este correo ya esta registrado, utilice otro"
+            },
+    "registered_successfully": "Registrado correctamente"
+}

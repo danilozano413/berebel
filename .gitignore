@@ -1,0 +1,24 @@
+/nbproject/private/
+#remove conflicts files
+*.orig
+
+#Remove dependecies folder
+/node_modules
+/plugins
+
+-lock.*
+*lock.json
+
+#generated platforms
+/platforms
+
+#generated resources
+/resources/ios/icon/*
+/resources/ios/splash/*
+
+/resources/android/icon/*
+/resources/android/splash/*
+
+/e2e
+
+/www

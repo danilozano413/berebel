@@ -1,0 +1,161 @@
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage: 15%) {
+    @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage: 15%) {
+    @return mix(black, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function light($color, $percentage: 30%) {
+    @return lighten($color, $percentage);
+}
+
+/// Slightly soft  a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function dark($color, $percentage: 30%) {
+    @return darken($color, $percentage);
+}
+
+
+/// Slightly soft transparent a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function opacid($color, $percentage: 0.8) {
+    @return transparentize($color, $percentage);
+}
+
+
+/// Slightly  transparent a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function trans($color, $percentage: 0.4) {
+    @return transparentize($color, $percentage);
+}
+
+
+/// Slightly  more transparent a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function lucid($color, $percentage: 0.2) {
+    @return transparentize($color, $percentage);
+}
+
+
+// retrieve color from $colors map ie. `color(primary, base)`
+@function color($color-name, $color-variant: base) {
+    @if $color-variant == 'base'
+    {
+        @return map-get($colors-base, $color-name);
+    }@else
+    {
+        @return call(get-function($color-variant) , map-get($colors-base, $color-name), map-get($colors_config, $color-variant));
+    }
+}
+
+/// Triangle helper mixin
+/// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+/// @param {Color} $color [currentcolor] - Triangle color 
+/// @param {Length} $size [1em] - Triangle size
+@mixin triangle($direction: top, $color: currentcolor, $size: 1em) {
+    @if not index(top right bottom left, $direction) {
+        @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+    }
+
+    width: 0;
+    height: 0;
+    content: '';
+    z-index: 2;
+    border-#{opposite-position($direction)}: ($size * 1.5) solid $color;
+
+    $perpendicular-borders: $size solid transparent;
+
+    @if $direction == top or $direction == bottom {
+        border-left:   $perpendicular-borders;
+        border-right:  $perpendicular-borders;
+    } @else if $direction == right or $direction == left {
+        border-bottom: $perpendicular-borders;
+        border-top:    $perpendicular-borders;
+    }
+}
+
+// retrieve color foposited
+@function oposited($color-variant: base) {
+    @if ($color-variant == 'base')
+    {
+        @return 'shade';
+    }@else if ($color-variant == 'tint')
+    {
+        @return 'base';
+    }@else if ($color-variant == 'shade')
+    {
+        @return 'base';
+    }@else if ($color-variant == 'dark')
+    {
+        @return 'shade';
+    }@else if ($color-variant == 'light')
+    {
+        @return 'tint';
+    }@else if ($color-variant == 'lucid')
+    {
+        @return 'trans';
+    }@else if ($color-variant == 'trans')
+    {
+        @return 'opacid';
+    }@else if ($color-variant == 'opacid')
+    {
+        @return 'base';
+    }
+    @return 'base';
+    /*    @switch $color-variant {
+            @when 'base' {
+                @return 'tint';
+            }
+            @when 'tint' {
+                @return 'shade';
+            }
+            @when 'shade' {
+                @return 'tint';
+            }
+            @when 'dark' {
+                @return 'light';
+            }
+            @when 'light' {
+                @return 'dark';
+            }
+            @when 'lucid' {
+                @return 'base';
+            }
+            @when 'trans' {
+                @return 'base';
+            }
+            @when 'opacid' {
+                @return 'base';
+            }
+    
+        }*/
+}

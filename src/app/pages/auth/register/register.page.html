@@ -1,0 +1,68 @@
+<app-header  [logoutbtn]="false" [nolines]="true"></app-header>
+
+<ion-content>
+
+    <div class="registerpage" *ngIf="registerForm">
+        <div class="registerpage__title bg-primary py-1">
+            <div class="color-secondary w-80 mx-auto">
+                {{"register" | translate}}
+            </div>
+        </div>
+        <form [formGroup]='registerForm' class="registerpage__form w-80 mx-auto my-1" (ngSubmit)='register()'>
+            <div class='mb-0_5'>
+                <ion-item mode="md" class="registerpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'email'| translate}}</ion-label>
+                    <ion-input type="email" required formControlName='email' autocomplete="email"></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('email')">
+                    <span *ngFor="let error of hasError('email')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <div class='mb-0_5'>
+                <ion-item mode="md" class="registerpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'name'| translate}}</ion-label>
+                    <ion-input type="text" required formControlName='name' autocomplete="name"></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('name')">
+                    <span *ngFor="let error of hasError('name')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <div class='mb-0_5'>
+                <ion-item mode="md" class="registerpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'password'| translate}}</ion-label>
+                    <ion-input type="password" required formControlName='password' autocomplete="password"></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('password')">
+                    <span *ngFor="let error of hasError('password')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <div class='mt-0_5'>
+                <ion-item mode="md" class="registerpage__form__input fz-0_9" lines='full'>
+                    <ion-label position="floating"> {{'password_conf'| translate}}</ion-label>
+                    <ion-input type="password" required formControlName='password_conf'></ion-input>
+                </ion-item>
+                <ion-text class='color-error bmt-1 fz-0_6' *ngIf="hasError('password_conf')">
+                    <span *ngFor="let error of hasError('password_conf')">{{('formError.'+error) | translate}}</span>
+                </ion-text>
+            </div>
+
+            <ion-button mode="md" fill="outline" expand="block"  color='primary'  type="submit"  [disabled]="!registerForm.valid" class="mt-2">
+                {{ 'send' | translate }}
+            </ion-button>
+        </form>
+
+    </div>
+</ion-content>
+<ion-footer>
+    <div class="footer bg-primary">
+        <div class='login text-center py-0_5 w-80 mx-auto'>
+            <div class="loginbtn__caption color-light text-italic fz-0_8 mb-0_5"> {{'already_registered' | translate}}</div>
+            <ion-button fill="outline" expand="block" class="login__btn" color="secondary" (click)="goLogin()">
+                <div class="login__btn__title">{{'login'| translate}}</div>
+            </ion-button>
+        </div>
+    </div>
+</ion-footer>
