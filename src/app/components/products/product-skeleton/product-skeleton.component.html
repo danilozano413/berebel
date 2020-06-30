@@ -1,3 +1,71 @@
-<p>
-  product-skeleton works!
-</p>
+
+<ion-card class="ion-no-padding mx-0 my-0_5" >
+    <ion-card-header class="ion-no-padding">
+        <ion-item lines='none'>
+            <ion-avatar >
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-avatar>
+            <ion-label class="text-bold fz-0_8-f pl-0_5">
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </ion-label>
+        </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                </ion-col>
+                <ion-col size="6">
+                    <div class='text-right'>
+                        <span><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></span>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class=' color-dark'>
+                <ion-col size="5">
+                    <div class='category'>
+                        <div class="category__title text-bold fz-0_8">
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </div>
+                        <div class="category__value fz-0_6">
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="4">
+                    <div class='tags'>
+                        <div class="tags__title text-bold fz-0_8">
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </div>
+                        <div class="tags__value fz-0_6" >
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="3">
+                    <div class="price">
+                        <div class="price__title text-bold fz-0_8">
+                            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                        </div>
+
+                        <div class="price__value">
+                            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+                </ion-col>
+                <ion-col size="6">
+                    <div class='text-right'>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                    </div>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-card>

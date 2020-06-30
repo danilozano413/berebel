@@ -88,6 +88,7 @@ export class HomePage implements OnInit
 
     applyConfiguration()
     {
+        this.products = [];
         this.skeleton = true;
         this.showConfiguration = false;
         this.refreshItems().then(
@@ -161,7 +162,7 @@ export class HomePage implements OnInit
                 {
                     this.products = this.products.concat(res);
                     //check if has more products 
-                    if (!res.length || res.length < ITEMS_PER_LIST)
+                    if (!res.length || res.length < ITEMS_PER_PAGE)
                     {
                         this.page = 0;
                     }
