@@ -1,0 +1,22 @@
+.price
+{
+    min-width: calc(1rem * 4);
+    &__regular
+    {
+        text-decoration: line-through;
+        font-size: .8rem;
+        text-align: right;
+    }
+    &__value
+    {
+        font-size: .9rem;
+        text-align: center;
+
+        &--offer
+        {
+            font-size: .8rem;
+            text-align: left;
+            font-weight: bold;
+        }
+    }
+}

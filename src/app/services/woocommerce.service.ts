@@ -16,7 +16,7 @@ export class WoocommerceService
         private api: ApiProvider
     ) {}
 
-    getProducts(wooAuth: WooAuthModel, search = null, page: number = 1)
+    getProducts(wooAuth: WooAuthModel, search: string = null, page: number = 1, itemsPerPage: number = ITEMS_PER_LIST)
     {
         return new Promise<ProductModel[]>(
             (resolve, reject) =>
@@ -26,7 +26,7 @@ export class WoocommerceService
                 let params: any =
                 {
                     page: page,
-                    per_page: ITEMS_PER_LIST
+                    per_page: itemsPerPage
                 };
                 if (search && search.length)
                 {
@@ -70,7 +70,7 @@ export class WoocommerceService
             category: null,
             image: null,
             tags: null,
-            date: null
+            date: prod.date_modified
 
 
         }
@@ -81,6 +81,8 @@ export class WoocommerceService
             product.image = prod.images[0].src;
         }
 
+        console.log(prod.categories.length);
+
         //set categoires array
         if (prod.categories && prod.categories.length)
         {
@@ -89,9 +91,9 @@ export class WoocommerceService
             {
                 if (category.length)
                 {
-                    category.concat(', ');
+                    category = category.concat(', ');
                 }
-                category.concat(cate.name);
+                category = category.concat(cate.name);
             }
             product.category = category;
         }
@@ -111,11 +113,7 @@ export class WoocommerceService
             product.tags = tagText;
 
         }
-        //set date
-        if (prod.date_modified_gmt)
-        {
-            //            product.date = 
-        }
+
         return product;
     }
 }

@@ -20,6 +20,8 @@ export class ToastProvider
     )
     {
     }
+
+
     transformError(key: string = null, toast: boolean = false)
     {
         return new Promise(

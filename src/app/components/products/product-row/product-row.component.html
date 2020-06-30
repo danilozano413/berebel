@@ -1,3 +1,76 @@
-<p>
-  product-row works!
-</p>
+
+<ion-card *ngIf="product" class="ion-no-padding mx-0 my-0_5" >
+    <ion-card-header class="ion-no-padding">
+        <ion-item lines='none'>
+            <ion-avatar >
+                <img [src]="product?.image">
+            </ion-avatar>
+            <ion-label class="text-bold fz-0_8-f pl-0_5">
+                {{product?.name}}
+            </ion-label>
+            <ion-icon slot="end" color="secondary"[name]="product?.featured?  'star':  'star-outline'" class="fz-0_8-f"></ion-icon>
+        </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <small>
+                        <span class="text-italic">{{"sku" | translate}}-</span> <span>{{product?.sku}}</span>
+                    </small>
+                </ion-col>
+                <ion-col size="6">
+                    <div class='text-right'>
+                        <span [ngClass]="{'color-success-shade': isAvailable()}">{{product?.stock_status | translate}}</span>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class=' color-dark'>
+                <ion-col size="5">
+                    <div class='category'>
+                        <div class="category__title text-bold fz-0_8">
+                            <span>{{ 'categories' | translate}}</span>
+                        </div>
+                        <div class="category__value fz-0_6">
+                            {{ product.category}}
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="4">
+                    <div class='tags'>
+                        <div class="tags__title text-bold fz-0_8">
+                            <span>{{ 'tags' | translate}}</span>
+                        </div>
+                        <div class="tags__value fz-0_6" >
+                            {{ product.tags}}
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col size="3">
+                    <div class="price">
+                        <div class="price__title text-bold fz-0_8">
+                            <span>{{ 'price' | translate}}</span>
+                        </div>
+                        <div class="price__regular" *ngIf='hasOffer()'>
+                            {{product?.regular_price | number : '1.2-2'}}€
+                        </div>
+                        <div class="price__value" [ngClass]="{ 'price__value--offer': hasOffer()}">
+                            {{product?.price | number : '1.2-2' }}€
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <span [ngClass]="{'color-success-shade': isPublished()}">{{product?.status | translate}}</span>
+                </ion-col>
+                <ion-col size="6">
+                    <div class='text-right'>
+                        <span class='fz-0_8'>{{product?.date | date: 'h:mm a dd/MM/yyyy'}}</span>
+                    </div>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-card>

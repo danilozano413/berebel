@@ -10,7 +10,7 @@
     "product": "Producto",
     "products": "Productos",
     "client_id": "Clave del cliente",
-    "client_secret": "clave secreta de cliente",
+    "client_secret": "Clave secreta de cliente",
     "already_registered": "¿Ya tienes cuenta?",
     "unregistered": "¿No tienes cuenta?",
     "send": "Enviar",
@@ -45,7 +45,28 @@
                 "check_form": "Revisa el formulario",
                 "cordova": "Utiliza un disposivo móvil para utilizar esta funcionalidad",
                 "invalid_credentials": "Correo o contraseña incorrecto",
-                "email_inuse": "Este correo ya esta registrado, utilice otro"
+                "email_inuse": "Este correo ya esta registrado, utilice otro",
+                "moreItems": "No ha sido posible cargar mas productos",
+                "credentials": "No ha sido posible conectar con tu WooCommerce"
             },
-    "registered_successfully": "Registrado correctamente"
+    "registered_successfully": "Registrado correctamente",
+    "search_products": "Buscar Productos",
+    "apply": "Aplicar",
+    "url": "Web",
+    "url_placeholder": "https://tuwordpress.com",
+    "woo_configuration": "Configuiración WooCommerce",
+    "no-items": 
+            {
+                "title": "No hay productos",
+                "description": "No podemos mostrate productos. Comprueba tus credenciales."
+            },
+    "loading": "cargando",
+    "price": "Precio",
+    "categories": "Categorias",
+    "tags": "Etiquetas",
+    "instock": "Disponible",
+    "unavailable": "Sin existencias",
+    "sku": "SKU",
+    "publish": "Publicado"
+    
 }

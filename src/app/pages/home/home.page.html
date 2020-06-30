@@ -1,5 +1,72 @@
 <app-header></app-header>
 
 <ion-content>
+    <div class="configuration" *ngIf="showConfiguration">
+        <div class='configuration__header py-0_5 bg-primary'>
+            <div class='configuration__header__title w-80 mx-auto color-light text-center'>
+                {{ 'woo_configuration' | translate}}
+            </div>
 
+        </div>
+        <ion-item mode="md" class="configuration__url fz-0_9" lines='full'>
+            <ion-label position="floating"> {{'url'| translate}}</ion-label>
+            <ion-input [(ngModel)]='wooAuth.url' [placeholder]=" 'url_placeholder' | translate "></ion-input>
+        </ion-item>
+        <ion-item mode="md" class="configuration__client_id fz-0_9" lines='full'>
+            <ion-label position="floating"> {{'client_id'| translate}}</ion-label>
+            <ion-input [(ngModel)]='wooAuth.client_id'></ion-input>
+        </ion-item>
+        <ion-item mode="md" class="configuration__client_secret fz-0_9" lines='full'>
+            <ion-label position="floating"> {{'client_secret'| translate}}</ion-label>
+            <ion-input [(ngModel)]='wooAuth.client_secret'></ion-input>
+        </ion-item>
+        <div class='bg-primary p-0_5'>
+
+            <div class='configuration__submit w-30 ml-auto'>
+                <ion-button color='secondary' expand='block' fill='outline' [disabled]='!hasWooAuth()' (click)='applyConfiguration()'>
+                    {{ 'apply'| translate }}
+                </ion-button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf='hasWooAuth()'>
+        <ion-item mode="md"lines="full" class="ion-no-padding bg-primary">
+            <ion-searchbar mode='md' debounce="800" [placeholder]=" 'search_products' | translate " (ionChange)="newSearch($event)" [value]="search" class="no-border ">
+            </ion-searchbar>
+            <ion-button mode="md"  class="btn btn-transparent m-0 fz-1_4 h-100" slot="end" (click)="showConfiguration = !showConfiguration">
+                <ion-icon name="lock-open-outline" color="secondary"></ion-icon>
+            </ion-button>
+        </ion-item>
+        <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+        <div class="progress-space" *ngIf="!loading"></div>
+
+        <ion-list class="product__list ion-padding" *ngIf="!skeleton && products && products.length">
+            <app-product-row *ngFor="let product of products" [product]="product"></app-product-row>
+            <ion-infinite-scroll threshold="5%" (ionInfinite)="infinite($event)" *ngIf="page">
+                <ion-infinite-scroll-content
+                    loadingSpinner="crescent"
+                    [loadingText]="'loading'|translate">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-list>
+
+        <ion-list class="product__skeletons ion-padding" *ngIf="loading && skeleton">
+            <app-product-skeleton *ngFor="let skeleton of skeletonRepeats()" [product]="product"></app-product-skeleton>
+        </ion-list>
+
+        <div class='no-items w-80 mx-auto mt-2' *ngIf="!loading && !skeleton && (!products || !products.length)">
+            <div class='no-items__title text-center text-bold'>
+                {{"no-items.title" | translate}}
+            </div>
+            <div class='no-items__image w-25  mx-auto color-secondary'>
+                <img src="assets/img/thumbs-down-outline.svg" class="color-secondary">
+            </div>
+
+            <div class='no-items__title text-center'>
+                {{"no-items.description" | translate}}
+            </div>
+
+        </div>
+
+    </div>
 </ion-content>
