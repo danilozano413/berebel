@@ -36,9 +36,9 @@ export class HomePage implements OnInit
     ngOnInit()
     {
         //discomment for debug 
-                this.wooAuth.url = "https://dani.betademo.es";
-                this.wooAuth.client_id = "ck_9276c847402390ff0a12d9e81cecebea93bdb2b3";
-                this.wooAuth.client_secret = "cs_d39925b58d4bd559388a9b670d7dade57a870c60";
+//                this.wooAuth.url = "https://dani.betademo.es";
+//                this.wooAuth.client_id = "ck_9276c847402390ff0a12d9e81cecebea93bdb2b3";
+//                this.wooAuth.client_secret = "cs_d39925b58d4bd559388a9b670d7dade57a870c60";
     }
 
     hasWooAuth(): boolean
@@ -53,9 +53,9 @@ export class HomePage implements OnInit
     ionViewDidEnter()
     {
 
-//        this.wooAuth.url = null;
-//        this.wooAuth.client_id = null;
-//        this.wooAuth.client_secret = null;
+        this.wooAuth.url = null;
+        this.wooAuth.client_id = null;
+        this.wooAuth.client_secret = null;
 
         //check for configuration
         if (this.hasWooAuth())
@@ -75,14 +75,6 @@ export class HomePage implements OnInit
         {
             this.showConfiguration = true;
         }
-
-//        setTimeout(
-//            () =>
-//            {
-//                this.wooAuth.url = "https://dani.betademo.es";
-//                this.wooAuth.client_id = "ck_9276c847402390ff0a12d9e81cecebea93bdb2b3";
-//                this.wooAuth.client_secret = "cs_d39925b58d4bd559388a9b670d7dade57a870c60";
-//            }, 800);
 
     }
 

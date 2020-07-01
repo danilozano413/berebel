@@ -51,7 +51,7 @@
         </ion-list>
 
         <ion-list class="product__skeletons ion-padding" *ngIf="loading && skeleton">
-            <app-product-skeleton *ngFor="let skeleton of skeletonRepeats()" [product]="product"></app-product-skeleton>
+            <app-product-skeleton *ngFor="let skeleton of skeletonRepeats()"></app-product-skeleton>
         </ion-list>
 
         <div class='no-items w-80 mx-auto mt-2' *ngIf="!loading && !skeleton && (!products || !products.length)">

@@ -177,8 +177,27 @@ export class AuthService
 
     }
 
-    isGranted(): boolean
+    isGranted()
     {
-        return this.getUser() !== null;
+        return new Promise<any>(
+            (resolve, reject) =>
+            {
+                if (this.getUser() === null)
+                {
+                    reject();
+                }
+                this.firebase_authentication.getIdToken(false).then(
+                    (res) =>
+                    {
+                        resolve(true);
+                    },
+                    (err) =>
+                    {
+                        console.error("Fail on get token with firebase", err);
+                        reject(err);
+                    }
+                );
+            }
+        );
     }
 }

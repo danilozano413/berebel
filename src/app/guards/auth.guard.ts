@@ -14,12 +14,25 @@ export class AuthGuard implements CanActivate
         private auth_service: AuthService,
     ) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
     {
+        return new Promise<boolean>(
+            (resolve, reject) =>
+            {
+                this.auth_service.isGranted().then(
+                    (res) =>
+                    {
+                        resolve(res);
+                    },
+                    (err) =>
+                    {
+                        this.router.navigateByUrl('/login');
+                        reject(err);
 
-        return this.auth_service.isGranted();
+                    }
+                );
+            }
+        );
     }
 
 }

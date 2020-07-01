@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MenuComponent implements OnInit
 {
-
+    //mock
     public user : any = {
         name: "Dani",
         email: "danilozanoescarti@gmail.com"
