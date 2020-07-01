@@ -35,7 +35,6 @@
                         },
                 "password_conf":
                         {
-                            "pattern": "Introduce un correo válido",
                             "required": "Repite la contraseña",
                             "match": "Las contraseñas no coinciden"
                         }

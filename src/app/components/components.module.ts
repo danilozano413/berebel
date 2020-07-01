@@ -9,7 +9,6 @@ import {TranslateModule} from '@ngx-translate/core';
 import {ProductRowComponent} from './products/product-row/product-row.component';
 import {ProductSkeletonComponent} from './products/product-skeleton/product-skeleton.component';
 
-import {MenuComponent} from './menu/menu.component';
 import {HeaderComponent} from './header/header.component';
 
 @NgModule({
@@ -17,7 +16,6 @@ import {HeaderComponent} from './header/header.component';
         [
             ProductRowComponent,
             ProductSkeletonComponent,
-            MenuComponent,
             HeaderComponent
 
         ],
@@ -37,7 +35,6 @@ import {HeaderComponent} from './header/header.component';
         [
             ProductRowComponent,
             ProductSkeletonComponent,
-            MenuComponent,
             HeaderComponent
         ],
     entryComponents:

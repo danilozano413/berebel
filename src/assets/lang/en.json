@@ -1,0 +1,71 @@
+{
+    "appname": "BeRebel",
+    "register": "Register",
+    "login": "Login",
+    "email": "Eamil",
+    "logout": "Logout",
+    "password": "Password",
+    "password_conf": "Repeat login",
+    "name": "Name",
+    "product": "Product",
+    "products": "Products",
+    "client_id": "Client id",
+    "client_secret": "Client secret",
+    "already_registered": "Already registered?",
+    "unregistered": "Unregisterd?",
+    "send": "Send",
+    "sending": "Sending",
+    "formError": 
+            {
+                "email":
+                        {
+                            "pattern": "Type a valid email",
+                            "required": "Type a email",
+                            "inuse": "Email in use"
+                        },
+                "name":
+                        {
+                            "required": "Type your name"
+                        },
+                "password":
+                        {
+                            "required": "Type a password",
+                            "minlength": "The password is too short",
+                            "maxlength": "The password is too log"
+                        },
+                "password_conf":
+                        {
+                            "required": "Repeat your password",
+                            "match": "Passwords don't match"
+                        }
+            },
+    "error": 
+            {
+                "check_form": "Check form",
+                "cordova": "Use a cordova device to use this",
+                "invalid_credentials": "Wrong password or username",
+                "email_inuse": "Email in use",
+                "moreItems": "Can't load more products",
+                "credentials": "Can't connect to WooCommerce"
+            },
+    "registered_successfully": "Registered successfully",
+    "search_products": "Search products",
+    "apply": "Apply",
+    "url": "Web",
+    "url_placeholder": "https://yourwordpress.com",
+    "woo_configuration": "WooCommerce configuration",
+    "no-items": 
+            {
+                "title": "There are no products",
+                "description": "Can't show more products. Check your credentials."
+            },
+    "loading": "loding",
+    "price": "Prdice",
+    "categories": "Categories",
+    "tags": "Tags",
+    "instock": "Available",
+    "unavailable": "Unavailable",
+    "sku": "SKU",
+    "publish": "Published"
+    
+}
